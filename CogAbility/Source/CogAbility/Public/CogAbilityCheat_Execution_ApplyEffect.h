@@ -21,4 +21,7 @@ public:
 
 	UPROPERTY(EditAnywhere)
     TSubclassOf<UGameplayEffect> Effect;
+
+    UPROPERTY(EditAnywhere)
+    int EffectLevel = 1;
 };

@@ -36,7 +36,7 @@ void UCogAbilityCheat_Execution_ApplyEffect::Execute_Implementation(const UObjec
 
             FGameplayEffectContextHandle ContextHandle = InstigatorAbilitySystem->MakeEffectContext();
             ContextHandle.AddSourceObject(InstigatorAbilitySystem);
-            FGameplayEffectSpecHandle SpecHandle = InstigatorAbilitySystem->MakeOutgoingSpec(Effect, 1, ContextHandle);
+            FGameplayEffectSpecHandle SpecHandle = InstigatorAbilitySystem->MakeOutgoingSpec(Effect, EffectLevel, ContextHandle);
 
             if (const FGameplayEffectSpec* EffectSpec = SpecHandle.Data.Get())
             {
