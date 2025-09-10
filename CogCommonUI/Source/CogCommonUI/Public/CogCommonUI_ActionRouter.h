@@ -10,4 +10,9 @@ class COGCOMMONUI_API UCogCommonUI_ActionRouter : public UCommonUIActionRouterBa
 	GENERATED_BODY()
 	
 	virtual ERouteUIInputResult ProcessInput(FKey Key, EInputEvent InputEvent) const override;
+	virtual void PlayerControllerChanged(APlayerController* NewPlayerController) override;
+	void CogInputStateChanged(bool bNewState);
+
+private:
+	TMap<TWeakObjectPtr<APlayerController>, FDelegateHandle> CogInputChangeBinds;
 };

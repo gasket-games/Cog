@@ -18,6 +18,8 @@ class ULocalPlayer;
 struct FDisplayMetrics;
 struct ImPlotContext;
 
+DECLARE_EVENT_OneParam(FCogImguiContext, FCogInputStateChanged, bool);
+
 struct COGIMGUI_API FCogImGuiViewportData
 {
 	TWeakPtr<SWindow> Window = nullptr;
@@ -87,6 +89,8 @@ public:
 	void OnImGuiWidgetFocusLost();
 
 	static bool GetIsNetImguiInitialized() { return bIsNetImGuiInitialized; }
+
+	FCogInputStateChanged CogInputStateChanged;
 
 private:
 

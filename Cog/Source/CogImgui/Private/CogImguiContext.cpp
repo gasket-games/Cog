@@ -218,6 +218,8 @@ void FCogImguiContext::Shutdown()
         ImGui::DestroyContext(Context);
         Context = nullptr;
     }
+
+    CogInputStateChanged.Clear();
 }
 
 //--------------------------------------------------------------------------------------------------------------------------
@@ -792,6 +794,8 @@ void FCogImguiContext::SetEnableInput(const bool InValue)
     }
 
     RefreshMouseCursor();
+
+    CogInputStateChanged.Broadcast(InValue);
 }
 
 //--------------------------------------------------------------------------------------------------------------------------
