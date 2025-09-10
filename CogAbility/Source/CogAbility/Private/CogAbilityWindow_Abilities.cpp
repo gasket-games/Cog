@@ -327,6 +327,11 @@ void FCogAbilityWindow_Abilities::RenderAbilitiesTable(UAbilitySystemComponent& 
 //--------------------------------------------------------------------------------------------------------------------------
 bool FCogAbilityWindow_Abilities::ShouldShowAbility(UAbilitySystemComponent& AbilitySystemComponent, FGameplayAbilitySpec& Spec, const UGameplayAbility* Ability)
 {
+    if (!IsValid(Ability))
+    {
+        return false;
+    }
+    
     const bool IsBlocked = Ability->DoesAbilitySatisfyTagRequirements(AbilitySystemComponent) == false;
     if (Config->ShowBlocked && IsBlocked)
     {
