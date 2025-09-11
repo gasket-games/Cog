@@ -33,6 +33,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <limits>
 
 #ifdef _MSC_VER
 #define sprintf sprintf_s
@@ -347,9 +348,9 @@ void Demo_FilledLinePlots() {
         ImPlot::SetupAxesLimits(0,100,0,500);
         if (show_fills) {
             ImPlot::PushStyleVar(ImPlotStyleVar_FillAlpha, 0.25f);
-            ImPlot::PlotShaded("Stock 1", xs1, ys1, 101, shade_mode == 0 ? -INFINITY : shade_mode == 1 ? INFINITY : fill_ref, flags);
-            ImPlot::PlotShaded("Stock 2", xs1, ys2, 101, shade_mode == 0 ? -INFINITY : shade_mode == 1 ? INFINITY : fill_ref, flags);
-            ImPlot::PlotShaded("Stock 3", xs1, ys3, 101, shade_mode == 0 ? -INFINITY : shade_mode == 1 ? INFINITY : fill_ref, flags);
+            ImPlot::PlotShaded("Stock 1", xs1, ys1, 101, shade_mode == 0 ? -std::numeric_limits<float>::infinity() : shade_mode == 1 ? std::numeric_limits<float>::infinity() : fill_ref, flags);
+            ImPlot::PlotShaded("Stock 2", xs1, ys2, 101, shade_mode == 0 ? -std::numeric_limits<float>::infinity() : shade_mode == 1 ? std::numeric_limits<float>::infinity() : fill_ref, flags);
+            ImPlot::PlotShaded("Stock 3", xs1, ys3, 101, shade_mode == 0 ? -std::numeric_limits<float>::infinity() : shade_mode == 1 ? std::numeric_limits<float>::infinity() : fill_ref, flags);
             ImPlot::PopStyleVar();
         }
         if (show_lines) {
@@ -903,7 +904,7 @@ void Demo_RealtimePlots() {
         ImPlot::SetupAxisLimits(ImAxis_X1,t - history, t, ImGuiCond_Always);
         ImPlot::SetupAxisLimits(ImAxis_Y1,0,1);
         ImPlot::SetNextFillStyle(IMPLOT_AUTO_COL,0.5f);
-        ImPlot::PlotShaded("Mouse X", &sdata1.Data[0].x, &sdata1.Data[0].y, sdata1.Data.size(), -INFINITY, 0, sdata1.Offset, 2 * sizeof(float));
+        ImPlot::PlotShaded("Mouse X", &sdata1.Data[0].x, &sdata1.Data[0].y, sdata1.Data.size(), -std::numeric_limits<float>::infinity(), 0, sdata1.Offset, 2 * sizeof(float));
         ImPlot::PlotLine("Mouse Y", &sdata2.Data[0].x, &sdata2.Data[0].y, sdata2.Data.size(), 0, sdata2.Offset, 2*sizeof(float));
         ImPlot::EndPlot();
     }
@@ -1093,7 +1094,7 @@ void Demo_CustomScale() {
         ImPlot::SetupAxis(ImAxis_X1, "Linear");
         ImPlot::SetupAxis(ImAxis_Y1, "Sqrt");
         ImPlot::SetupAxisScale(ImAxis_Y1, TransformForward_Sqrt, TransformInverse_Sqrt);
-        ImPlot::SetupAxisLimitsConstraints(ImAxis_Y1, 0, INFINITY);
+        ImPlot::SetupAxisLimitsConstraints(ImAxis_Y1, 0, std::numeric_limits<float>::infinity());
         ImPlot::PlotLine("##data",v,v,100);
         ImPlot::EndPlot();
     }
