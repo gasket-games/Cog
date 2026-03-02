@@ -9,11 +9,13 @@
 #include "CogEngineWindow_Notifications.generated.h"
 
 class UCogEngineConfig_Notifications;
+class FCogEngineWindow_Notifications;
 
 //--------------------------------------------------------------------------------------------------------------------------
-class FCogNotificationOutputDevice : public FOutputDevice
+class COGENGINE_API FCogNotificationOutputDevice : public FOutputDevice
 {
 public:
+    // friend is not enough for clang...
     friend class FCogEngineWindow_Notifications;
 
     FCogNotificationOutputDevice();

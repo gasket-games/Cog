@@ -510,7 +510,7 @@ bool FCogEngineWindow_Inspector::RenderProperty(const FProperty* Property, uint8
             ImGui::TableNextColumn();
             ImGui::Text("DisplayName:");
             ImGui::TableNextColumn();
-            ImGui::Text(TCHAR_TO_UTF8(*Property->GetDisplayNameText().ToString()));
+            ImGui::Text("%s", TCHAR_TO_UTF8(*Property->GetDisplayNameText().ToString()));
 #endif  // WITH_EDITORONLY_DATA
 
             ImGui::TableNextRow();
@@ -532,7 +532,7 @@ bool FCogEngineWindow_Inspector::RenderProperty(const FProperty* Property, uint8
             ImGui::TableNextColumn();
             if (Property->HasMetaData("Tooltip"))
             {
-                ImGui::Text(TCHAR_TO_UTF8(*Property->GetToolTipText(false).ToString()));
+                ImGui::Text("%s", TCHAR_TO_UTF8(*Property->GetToolTipText(false).ToString()));
             }
 #endif  // WITH_EDITORONLY_DATA
 
@@ -550,7 +550,7 @@ bool FCogEngineWindow_Inspector::RenderProperty(const FProperty* Property, uint8
             ImGui::BeginTooltip();
             ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
 
-            ImGui::Text(TCHAR_TO_UTF8(*Property->GetToolTipText(false).ToString()));
+            ImGui::Text("%s", TCHAR_TO_UTF8(*Property->GetToolTipText(false).ToString()));
             ImGui::Text("Details [CTRL]");
             ImGui::PopTextWrapPos();
             ImGui::EndTooltip();

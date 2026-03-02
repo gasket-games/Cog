@@ -521,7 +521,7 @@ bool FCogWidgets::InputChord(const char* Label, FInputChord& InInputChord)
     ImGui::AlignTextToFramePadding();
     ImGui::BeginDisabled();
     ImGui::SetNextItemWidth(ImGui::GetFontSize() * 15);
-    ImGui::InputText("##Shortcut", const_cast<char*>(Label), IM_ARRAYSIZE(Label));
+    ImGui::InputText("##Shortcut", const_cast<char*>(Label), strlen(Label));
     ImGui::EndDisabled();
 
     ImGui::SameLine();
@@ -944,7 +944,7 @@ bool FCogWidgets::CollisionObjectTypeChannels(int32& OutChannels)
 
     for (int32 ChannelIndex = 0; ChannelIndex < static_cast<int32>(ECC_OverlapAll_Deprecated); ++ChannelIndex)
     {
-        if (CollisionProfile->ConvertToObjectType(static_cast<ECollisionChannel>(ChannelIndex)) == TraceTypeQuery_MAX)
+        if (CollisionProfile->ConvertToObjectType(static_cast<ECollisionChannel>(ChannelIndex)) == ObjectTypeQuery_MAX)
         { continue; }
         
         ImGui::PushID(ChannelIndex);
