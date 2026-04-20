@@ -21,6 +21,8 @@ public:
     
     virtual void RenderContent() override;
 
+    static const TCHAR* GetBuildDate();
+
 protected:
 
     void BuildText();

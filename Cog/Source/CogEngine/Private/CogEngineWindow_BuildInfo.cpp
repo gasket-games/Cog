@@ -105,6 +105,11 @@ void FCogEngineWindow_BuildInfo::RenderContent()
     }
 }
 
+const TCHAR* FCogEngineWindow_BuildInfo::GetBuildDate() 
+{
+    return TEXT(__DATE__);
+}
+
 //--------------------------------------------------------------------------------------------------------------------------
 void FCogEngineWindow_BuildInfo::BuildText()
 {
@@ -112,7 +117,7 @@ void FCogEngineWindow_BuildInfo::BuildText()
     bool AddSeparator = false;
 
     if (Config->ShowBranchName) { S.Append(BuildSettings::GetBranchName()); S.Append(Config->Separator); }
-    if (Config->ShowBuildDate) { S.Append(BuildSettings::GetBuildDate()); S.Append(Config->Separator); }
+    if (Config->ShowBuildDate) { S.Append(GetBuildDate()); S.Append(Config->Separator); }
     if (Config->ShowBuildConfiguration) { S.Append(LexToString(FApp::GetBuildConfiguration())); S.Append(Config->Separator); }
     if (Config->ShowBuildTargetType) { S.Append(LexToString(FApp::GetBuildTargetType())); S.Append(Config->Separator); }
     if (Config->ShowBuildUser) { S.Append(BuildSettings::GetBuildUser()); S.Append(Config->Separator); }
